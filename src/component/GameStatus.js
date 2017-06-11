@@ -13,7 +13,11 @@ class GameStatus extends Component {
                 className="btn btn-primary btn-block" 
                 onClick={this.props.clearBoard}>
                 New Game
-              </button> : null}
+              </button> : <button
+                className="btn btn-primary btn-block" 
+                onClick={this.props.doneMove}>
+                Done
+              </button>}
         </div>
       </div>
     );

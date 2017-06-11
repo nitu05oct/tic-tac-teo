@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { clearBoard } from '../action';
+import { clearBoard , doneMove } from '../action';
 import GameStatus from '../component/GameStatus';
 
 class PlayerInfo extends Component {
@@ -25,7 +25,7 @@ class PlayerInfo extends Component {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({clearBoard}, dispatch);
+  return bindActionCreators({clearBoard , doneMove}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerInfo);

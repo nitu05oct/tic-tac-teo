@@ -10,3 +10,9 @@ export const clearBoard = () => {
     type: 'CLEAR_BOARD'
   }
 }
+
+export const doneMove = () => {
+  return {
+    type: 'DONE_MOVE'
+  }
+}

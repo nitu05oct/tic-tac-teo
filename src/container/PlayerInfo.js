@@ -16,8 +16,7 @@ class PlayerInfo extends Component {
   }
 }
 
-//const mapStateToProps = ({turn, winner, players}) => {
-  const mapStateToProps = ({turn, finish, players}) => {
+ const mapStateToProps = ({turn, finish, players}) => {
   return {
     turn,
     finish,

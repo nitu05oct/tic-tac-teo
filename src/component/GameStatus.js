@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class GameStatus extends Component {
-
   render(){
-    console.log(this.props);
     return (
       <div className="row game-status">
         <div className="col-md-6 col-md-offset-3">
-          <h4>{this.props.players[this.props.turn]}'s Turn</h4>
+          <h1>{this.props.players[this.props.turn]}'s Turn</h1>
               { this.props.finish ? 
               <button
                 className="btn btn-primary btn-block" 
@@ -22,6 +21,14 @@ class GameStatus extends Component {
       </div>
     );
   }
+};
+
+GameStatus.propTypes = {
+  players: PropTypes.array,
+  turn: PropTypes.number,
+  finish: PropTypes.bool,
+  doneMove: PropTypes.func,
+  clearBoard: PropTypes.func
 };
 
 export default GameStatus;

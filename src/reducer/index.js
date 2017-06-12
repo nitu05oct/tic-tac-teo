@@ -8,13 +8,15 @@ const initialState = {
   prevY : '',
   finish: false,
   players: ['X', 'O'],
+  moveClass: '',
   turn: 0
 };
 
 
 const markSquare = (board, pos, mark) => {
   let {x, y} = pos;
-  console.log(mark);
+ // console.log(mark);
+
   return [
   ...board.slice(0, x),
   [
@@ -60,41 +62,27 @@ const ticTacToeApp = (state = initialState, action) => {
     case 'MARK_SQUARE':
 
       let {x, y} = action.pos;
-      console.log('current',x, y);
       let prevX = state.prevX;
-      let prevY = state.prevY; 
-      console.log('prev',prevX, prevY);
-      console.log('board',state.board);
-      //  console.log('freezboard',state.freezedBorad);
-        if(state.board[x][y] === '' && prevX === '' && prevY === ''){
+      let prevY = state.prevY;      
+      
+      if(state.board[x][y] === '' && prevX === '' && prevY === ''){
         let mark = getMark(state);
-        
         let board = markSquare(state.board, {x, y}, mark);
         prevX = x;
         prevY = y;
-        //let turn = takeTurn(state);
-    
-       // let finish = checkGameStatus(board); 
-        //console.log(finish);
-        console.log('board',board);
-       // return Object.assign({}, state, {board, turn , finish});
-        return Object.assign({}, state, {board, prevX, prevY});
-
-      } else if(prevX === x && prevY === y && state.board[x][y] === getMark(state)){
-        console.log('here in sasme cell');
+        let moveClass = 'red-box';       
+        return Object.assign({}, state, {board, prevX, prevY,moveClass});
+      } 
+      else if(prevX === x && prevY === y && state.board[x][y] === getMark(state)){
         let board = markSquare(state.board, {x, y}, '');
         return Object.assign({}, state, {board});
       }
       else if(prevX !== '' && prevY !== '' && state.board[x][y] === ''){
-        console.log('here in another cell');
         let mark = getMark(state);
-
-        let board = markSquare(state.board, {x, y}, mark);
-        console.log(board,prevX, prevY);
+        let board = markSquare(state.board, {x, y}, mark);        
         x = prevX;
         y = prevY;
-        board = markSquare(board, {x, y}, '');
-        console.log(board);
+        board = markSquare(board, {x, y}, '');        
         prevX = action.pos.x;
         prevY = action.pos.y;
         return Object.assign({}, state, {board, prevX, prevY});
@@ -103,16 +91,13 @@ const ticTacToeApp = (state = initialState, action) => {
         return state;
 
     case 'DONE_MOVE':    
-       // let board = markSquare(state.board, {x, y}, mark);
-
-        console.log(state.board);
         let board = state.board;
         let turn = takeTurn(state);    
-        let finish = checkGameStatus(board); 
-       // Object.assign(freezedBorad,board);
-         prevX = '';
-         prevY = '';
-      return Object.assign({}, state, {board, prevX, prevY, turn , finish});  
+        let finish = checkGameStatus(board);
+        let moveClass = ''; 
+        prevX = '';
+        prevY = '';
+      return Object.assign({}, state, {board, prevX, prevY, turn , finish , moveClass});  
 
     case 'CLEAR_BOARD':
       return Object.assign({}, initialState);

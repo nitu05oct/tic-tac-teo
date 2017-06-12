@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Grid extends Component {
   renderBoard(){
     return this.props.board.map( (row, x) => {
       return (
+
         <tr key={x}>
           {row.map( (square, y) => {
             return (
-              <td
+              <td className = {this.props.classNameToSet}
                 key={y}
-                onClick={() => {
+                onClick={(event) => {
                   this.props.onSquareClick({x, y});
                 }}
               >
@@ -34,5 +36,11 @@ class Grid extends Component {
     );
   }
 }
+
+Grid.propTypes = {
+  board: PropTypes.array,
+  classNameToSet: PropTypes.string,
+  onSquareClick: PropTypes.func
+};
 
 export default Grid;

@@ -10,14 +10,15 @@ class Board extends Component {
 
 render(){
     return (
-      <Grid board={this.props.board} onSquareClick={this.props.markSquare} />
+      <Grid board={this.props.board} classNameToSet = {this.props.moveClass} onSquareClick={this.props.markSquare} />
     );
   }
 };
 
 const mapStateToProps = (state) => {
   return {
-    board: state.board
+    board: state.board,
+    moveClass : state.moveClass
   }
 };
 

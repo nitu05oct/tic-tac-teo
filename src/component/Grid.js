@@ -30,7 +30,7 @@ class Grid extends PureComponent {
 
 Grid.propTypes = {
   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
-  onSquareClick2: PropTypes.func.isRequired,
+  onSquareClick: PropTypes.func.isRequired,
 };
 
 export default Grid;

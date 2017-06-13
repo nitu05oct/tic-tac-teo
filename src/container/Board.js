@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 
 import { markSquare } from '../action';
 import Grid from '../component/Grid';
 
-class Board extends Component {
-  render() {
-    return <Grid board={this.props.board} onSquareClick={this.props.markSquare} />;
-  }
-}
+const Board = props => <Grid board={props.board} onSquareClick={props.markSquare} />;
+
+Board.propTypes = {
+  board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  markSquare: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   board: state.board,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ markSquare }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Board);
+export default connect(mapStateToProps, { markSquare })(Board);

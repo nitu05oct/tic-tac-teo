@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { clearBoard } from '../action';
 import GameStatus from '../component/GameStatus';
 
-class PlayerInfo extends Component {
-  render() {
-    return <GameStatus {...this.props} />;
-  }
-}
+const PlayerInfo = props =>
+  <GameStatus turn={props.turn} finish={props.finish} players={props.players} onNewGameClick={props.clearBoard} />;
+
+PlayerInfo.propTypes = {
+  turn: PropTypes.number.isRequired,
+  finish: PropTypes.bool.isRequired,
+  players: PropTypes.arrayOf(PropTypes.string).isRequired,
+  clearBoard: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = ({ turn, finish, players }) => ({
   turn,
@@ -17,6 +21,4 @@ const mapStateToProps = ({ turn, finish, players }) => ({
   players,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ clearBoard }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlayerInfo);
+export default connect(mapStateToProps, { clearBoard })(PlayerInfo);

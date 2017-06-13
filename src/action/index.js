@@ -1,8 +1,4 @@
-export const markSquare = pos => ({
-  type: 'MARK_SQUARE',
-  pos,
-});
+import clearBoard from './clearBoard';
+import markSquare from './markSquare';
 
-export const clearBoard = () => ({
-  type: 'CLEAR_BOARD',
-});
+export { clearBoard, markSquare };

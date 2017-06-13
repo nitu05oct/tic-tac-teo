@@ -7,9 +7,7 @@ class Grid extends Component {
         {row.map((square, y) =>
           <td
             key={y}
-            onClick={() => {
-              this.props.onSquareClick({ x, y });
-            }}
+            onClick={() => this.props.onSquareClick({ x, y }) }
           >
             {square}
           </td>,

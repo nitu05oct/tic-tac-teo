@@ -11,9 +11,7 @@ jobs:
       - run:
           name: Install deps
           command: |
-            python --version
             yarn
-            yarn cache dir
       - save_cache:
           key: tic-tac-teo-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:

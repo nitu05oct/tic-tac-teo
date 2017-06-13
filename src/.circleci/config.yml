@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: kkarczmarczyk/node-yarn:7.6
+    working_directory: /home/ubuntu/tic-tac-teo
+    steps:
+      - checkout
+      - restore_cache:
+          key: tic-tac-teo-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install deps
+          command: |
+            python --version
+            yarn
+            yarn cache dir
+      - save_cache:
+          key: tic-tac-teo-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - /home/ubuntu/.cache
+            - /root/.cache
+            - ~/.cache
+      - run:
+          name: Lint
+          command: yarn lint
+      - run:
+          name: Test
+          command: yarn test
+

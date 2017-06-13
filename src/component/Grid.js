@@ -1,4 +1,4 @@
-/* eslint react/no-array-index-key: 0 */
+/* eslint react/no-array-index-key: 0, jsx-a11y/no-noninteractive-element-interactions: 0 */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
@@ -27,5 +27,10 @@ class Grid extends PureComponent {
     );
   }
 }
+
+Grid.propTypes = {
+  board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  onSquareClick: PropTypes.func.isRequired,
+};
 
 export default Grid;

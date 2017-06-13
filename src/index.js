@@ -6,11 +6,11 @@ import { createStore } from 'redux';
 import ticTacToeApp from './reducer';
 import App from './component/App';
 
-let store = createStore(ticTacToeApp);
+const store = createStore(ticTacToeApp);
 
 render(
-  <Provider store = { store }>
+  <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

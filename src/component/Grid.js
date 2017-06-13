@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+/* eslint react/no-array-index-key: 0 */
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
-class Grid extends Component {
+class Grid extends PureComponent {
   renderBoard() {
     return this.props.board.map((row, x) =>
       <tr key={x}>

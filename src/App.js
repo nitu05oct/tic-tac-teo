@@ -10,8 +10,7 @@ const App = () =>
     <PlayerInfo />
   </div>;
 
-export default () => (
+export default () =>
   <Provider store={store}>
     <App />
-  </Provider>
-);
+  </Provider>;

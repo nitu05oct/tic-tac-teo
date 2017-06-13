@@ -1,4 +1,4 @@
-export default () => dispatch => dispatch({
-  type: 'CLEAR_BOARD',
-});
-
+export default () => dispatch =>
+  dispatch({
+    type: 'CLEAR_BOARD',
+  });

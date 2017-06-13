@@ -1,6 +1,8 @@
 import React from 'react';
-import Board from '../container/Board';
-import PlayerInfo from '../container/PlayerInfo';
+import { Provider } from 'react-redux';
+import Board from './container/Board';
+import PlayerInfo from './container/PlayerInfo';
+import store from './store';
 
 const App = () =>
   <div>
@@ -8,4 +10,8 @@ const App = () =>
     <PlayerInfo />
   </div>;
 
-export default App;
+export default () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
